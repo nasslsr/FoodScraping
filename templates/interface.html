@@ -15,17 +15,18 @@
         }
 
         .navbar {
-            position: fixed;
+            position:absolute;
             top: 0;
             left: 0;
             right: 0;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             padding: 1rem;
-            background-color: blue;
+            background-color: rgb(142, 190, 214);
             color: white;
             width: 100%;
+            
         }
 
         .logo {
@@ -36,12 +37,13 @@
         form {
             margin-bottom: 300px;
             max-width: 60%;
-            border: 1px solid black;
+            border: 3px solid rgb(51, 111, 168);
             padding: 2rem;
-            background-color: rgba(248, 232, 232, 0.45);
-            backdrop-filter: blur(15px);
+            background-color: rgba(103, 183, 218, 0.45);
+            backdrop-filter: blur(50px);
             border-radius: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 25px;
 
             
         }
@@ -55,7 +57,7 @@
             width: 100%;
             padding: 0.5rem;
             font-size: 1.2em;
-            border: 1px solid #ccc; /* Ajout de la bordure */
+            border: 3px solid #096b98; /* Ajout de la bordure */
             border-radius: 5px;
             outline: none;
         }
@@ -72,15 +74,17 @@
         }
 
         input[type='submit'] {
-            background-color: red;
+            background-color: rgb(16, 128, 239);
+            font-size: 20px;
             color: white;
             padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border: 3px solid black;
+            border-radius: 20px;
+            
         }
 
         input[type='submit']:hover {
-            background-color: darkred;
+            background-color: rgb(12, 73, 194);
         }
         .res ul {
             list-style: none; /* Supprimer les puces */
@@ -93,18 +97,38 @@
             font-size: 1.4em; /* Augmenter la taille de la police */
             justify-content: space-between;
         }
+        .achat{
+            border: solid 3px black;
+            border-radius: 10px;
+            padding: 6px;
+            color: black;
+            text-decoration: none;
+            background-color: rgb(100, 197, 133);
+            
+        }
+        a{
+            text-decoration: none;
+        }
+        .nav{
+            margin-right: 30px;
+        }
+        
 
     </style>
 </head>
 <body>
     <div class="navbar">
-        <h1 style="font-weight: bold;">Shit Day Everyday 🍔</h1>
+        <h1 style="font-weight: bold; font-size: 40px; margin-left: 50px;">Shit Day Everyday 🍔</h1>
+        <div class="nav">
+        <a href="#"> <h1 class='achat' style="font-weight: bold;"> Shopping basket 🛒</h1> </a>
+        </div>
     </div>
+
 
     <form action="/submit" method="post">
         <label for="name">Entrer votre plat :</label>
         <input type="text" id="name" name="name">
-        
+
         <div class="button-container">
             <input type="submit" value="Submit">
         </div>
@@ -112,18 +136,19 @@
 
     <div class="res">
         {% if recipes %}
-    <h2>Résultats de la recherche :</h2>
+    <h1>Our recipe :</h1>
     <ul>
         {% for recipe in recipes %}
             <li>
-                <h3>{{ recipe[0] }}</h3>
-                <h4>Ingrédients :</h4>
+                <a href="/recipe?name={{ recipe[0] }}" style="text-decoration: none"><h3 style="color:cornflowerblue">{{ recipe[0] }}</h3></a>
+                <h4>Ingredients :</h4>
                 <p>{{ recipe[1] }}</p>
                 <h4>Instructions :</h4>
                 <p>{{ recipe[2] }}</p>
             </li>
         {% endfor %}
     </ul>
+        <input type="checkbox" placeholder="choose this recipe">
 {% else %}
     <p>Aucune recette trouvée.</p>
 {% endif %}
