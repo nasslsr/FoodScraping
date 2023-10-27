@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
-import requests
 import re
 import requests
-import re
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
